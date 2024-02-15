@@ -25,7 +25,7 @@ public class AccountOpenAuditReportRecord {
     public void firstNameMistmatch(APIActivityRecord record, RKAccountDataRecord rkRecord) {
         this.exceptionCategory = AuditExceptionCategory.MSG_FIRST_NM_MISMATCH;
 
-    }   
-    
+    }
+ 
     }
 

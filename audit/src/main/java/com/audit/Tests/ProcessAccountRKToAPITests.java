@@ -26,10 +26,86 @@ public class ProcessAccountRKToAPITests {
             this.noRKDatafound();
             return false;
         }
-        return true;
+
+        this.testAttribute(APIAttribute.PLAN_NUMBER);
+        this.testAttribute(APIAttribute.FIRST_NAME);
+        this.testAttribute(APIAttribute.LAST_NAME);
+        this.testAttribute(APIAttribute.SUFFIX);
+        this.testAttribute(APIAttribute.DOB);
+        this.testAttribute(APIAttribute.SSN);
+        this.testAttribute(APIAttribute.COUNTRY);
+        this.testAttribute(APIAttribute.CITIZENSHIP);
+        this.testAttribute(APIAttribute.MARITAL_STATUS);
+        this.testAttribute(APIAttribute.CITIZENSHIP);
+        // need not us citizen test
+        this.testAttribute(APIAttribute.GENDER);
+        this.testAttribute(APIAttribute.EMAIL);
+        this.testAttribute(APIAttribute.PRIMARY_PHONE);
+        this.testAttribute(APIAttribute.PRIMARY_PHONE_TYPE);
+        this.testAttribute(APIAttribute.ADDRESS1);
+        this.testAttribute(APIAttribute.ADDRESS2);
+        this.testAttribute(APIAttribute.CITY);
+        this.testAttribute(APIAttribute.STATE);
+        this.testAttribute(APIAttribute.ZIP_CODE);
+        this.testAttribute(APIAttribute.COUNTRY);
+        // not us test
+        this.testAttribute(APIAttribute.MOTHERS_MAIDEN_NAME);
+        this.testAttribute(APIAttribute.PRIM_BENE_ENTITY);
+        this.testAttribute(APIAttribute.PRIM_BENE_RELATIONSHIP);
+        this.testAttribute(APIAttribute.PRIM_BENE_FIRST_NAME);
+        this.testAttribute(APIAttribute.PRIM_BENE_LAST_NAME);
+        this.testAttribute(APIAttribute.PRIM_BENE_SUFFIX);
+        this.testAttribute(APIAttribute.PRIM_BENE_GENDER);
+        this.testAttribute(APIAttribute.PRIM_BENE_DOB);
+        this.testAttribute(APIAttribute.PRIM_BENE_SSN);
+        this.testAttribute(APIAttribute.PRIM_BENE_PHONE);
+        this.testAttribute(APIAttribute.PRIM_BENE_PERCENT);
+        this.testAttribute(APIAttribute.PRIM_BENE_ADDRESS1);
+        this.testAttribute(APIAttribute.PRIM_BENE_CITY);
+        this.testAttribute(APIAttribute.PRIM_BENE_STATE);
+        this.testAttribute(APIAttribute.PRIM_BENE_ZIP_CODE);
+        this.testAttribute(APIAttribute.CTG_BENE_ENTITY);
+        this.testAttribute(APIAttribute.CTG_BENE_RELATIONSHIP);
+        this.testAttribute(APIAttribute.CTG_BENE_FIRST_NAME);
+        this.testAttribute(APIAttribute.CTG_BENE_LAST_NAME);
+        this.testAttribute(APIAttribute.CTG_BENE_SUFFIX);
+        this.testAttribute(APIAttribute.CTG_BENE_GENGER);
+        this.testAttribute(APIAttribute.CTG_BENE_DOB);
+        this.testAttribute(APIAttribute.CTG_BENE_SSN);
+        this.testAttribute(APIAttribute.CTG_BENE_PHONE);
+        this.testAttribute(APIAttribute.CTG_BENE_PERCENT);
+        this.testAttribute(APIAttribute.CTG_BENE_ADDRESS1);
+        this.testAttribute(APIAttribute.CTG_BENE_CITY);
+        this.testAttribute(APIAttribute.CTG_BENE_STATE);
+        this.testAttribute(APIAttribute.CTG_BENE_ZIP_CODE);
+        this.testAttribute(APIAttribute.EMAIL_PREFERENCE);
+        // Test Subscription Type
+        // Test No Service Subscription to TPP IRA with Balance
+
+
+        return false;
 
     }
 
+    public void mismatch(APIAttribute attribute) {
+
+        AccountOpenAuditReportRecord accountOpenAuditReport = new AccountOpenAuditReportRecord();
+        accountOpenAuditReport.field = attribute.toString();
+        accountOpenAuditReport.exceptionCategory = AuditExceptionCategory.MSG_ATTRIBUTE_MISMATCH;
+        accountOpenAuditReport.exceptionReason = "Attribute Mismatch";
+        accountOpenAuditReport.exceptionDescription = "Attribute Mismatch";
+        accountOpenAuditReport.combineExceptionsDescription = "Attribute Mismatch";
+        this.appConfig.accountOpenAuditReport.add(accountOpenAuditReport);
+
+    }
+
+    public Boolean testAttribute(APIAttribute attribute) {
+        if (this.accountDataRecord.getAttribute(attribute).equals(apiActivityRecord.getAttribute(attribute))) {
+            return true;
+        }
+        
+        return false;
+    }
     public void noRKDatafound() {
         
         AccountOpenAuditReportRecord accountOpenAuditReport = new AccountOpenAuditReportRecord();
@@ -37,15 +113,13 @@ public class ProcessAccountRKToAPITests {
 
         this.appConfig.accountOpenAuditReport.add(accountOpenAuditReport);
     }
+ 
 
-    public Boolean testFirstName()  {
-        if (this.accountDataRecord.getFirstName().equals(apiActivityRecord.getAttribute(APIAttribute.FIRST_NAME))) { 
-            return true;
-        }
-        AccountOpenAuditReportRecord accountOpenAuditReport = new AccountOpenAuditReportRecord();
-        accountOpenAuditReport.firstNameMistmatch(this.apiActivityRecord,this.accountDataRecord);
 
-        this.appConfig.accountOpenAuditReport.add(accountOpenAuditReport);
-        return false;
-    }
+
 }
+
+
+
+
+

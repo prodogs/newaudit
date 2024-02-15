@@ -1,5 +1,7 @@
 package com.audit;
 
+import com.audit.Data.ExceptionMessages;
+
 public class App 
 {    
     
@@ -8,6 +10,7 @@ public class App
         AppConfig appConfig = new AppConfig();
         ProcessAuditReport processAuditReport = new ProcessAuditReport(appConfig);    
     
-        processAuditReport.run();
+        /// processAuditReport.run();
+        ExceptionMessages.readCSV();
     }
 }

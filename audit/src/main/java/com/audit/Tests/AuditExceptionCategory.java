@@ -1,5 +1,7 @@
 package com.audit.Tests;
 
+import com.audit.Data.APIAttribute;
+
 public enum AuditExceptionCategory {
     MSG_ACCOUNT_NUMBER_MISMATCH(1),
     MSG_ACCOUNT_NOT_FOUND(66    ),   
@@ -70,8 +72,16 @@ public enum AuditExceptionCategory {
     @SuppressWarnings("unused")
     private final int value;
 
+    public String getExceptionReason(APIAttribute attribute) {
+        return "";
+    }
+
+    public String getExceptionMessage(APIAttribute attribute) {
+        return "";
+    }
     private AuditExceptionCategory(int value) {
         this.value = value;
+        
     }
     
 }

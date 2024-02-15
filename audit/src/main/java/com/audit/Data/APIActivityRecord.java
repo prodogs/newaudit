@@ -7,6 +7,7 @@ public class APIActivityRecord {
     
     }
 
+     
     public APICallType getAPICallType() {
         return null;
     }
@@ -14,4 +15,7 @@ public class APIActivityRecord {
     public String getAttribute(APIAttribute attribute) {
         return null;
     }
+
+
+    
 }

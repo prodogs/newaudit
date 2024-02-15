@@ -70,6 +70,10 @@ public class RKAccountDataRecord {
 
     public String secondaryPhoneNumber() {
         return "";
-    }   
+    }
+
+    public String getAttribute(APIAttribute attribute) {
+        return "";
+    }
 
 }
