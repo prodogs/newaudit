@@ -2,6 +2,7 @@ package com.audit;
 
 import com.audit.Data.APIActivityDataStore;
 import com.audit.Data.APIActivityRecord;
+import com.audit.Tests.ProcessAccountRKToAPITests;
 
 public class ProcessAuditReport {
 
@@ -16,7 +17,7 @@ public class ProcessAuditReport {
        
         APIActivityDataStore dataStore = new APIActivityDataStore();
         APIActivityRecord records[] = dataStore.getRecords();
-        return;/*
+
         for (APIActivityRecord record : records) {
             System.out.println(record);
 
@@ -26,8 +27,6 @@ public class ProcessAuditReport {
                     ProcessAccountRKToAPITests accountRKToAPITests = new ProcessAccountRKToAPITests(appConfig, record);
                     accountRKToAPITests.run();
                     break;
-
-
                 case ALLOCATION_MODEL:
                     System.out.println("ALLOCATION_MODEL");
                     break;
@@ -41,6 +40,6 @@ public class ProcessAuditReport {
                     System.out.println("UNKNOWN");
                     break;
             }   
-        } */
+        } 
     }
 }

@@ -6,6 +6,7 @@ public class RKAccountDataRecord {
     public String balance;
     public String planNumber;
     public String accountStatus;
+    public String serviceCode;
     public String firstName;
     public String lastName;
     public String suffix;
@@ -56,7 +57,7 @@ public class RKAccountDataRecord {
 
     public String getAttribute(APIAttribute attribute) {
 
-    switch (attribute) {
+        switch (attribute) {
         case BALANCE:
             return balance;
         case PLAN_NUMBER:
@@ -161,19 +162,13 @@ public class RKAccountDataRecord {
             return null;
     }
 }
-     
-
-            
-    }
 
     public Boolean isTPPSubscribed() {
-        return 
-        false;
+        return this.serviceCode.equals("TPP");
     }
 
     public Boolean isTPPSubcribedWithBalance() {
-        return 
-        false;
+        return Integer.parseInt(this.balance) == 0;
     }
 
 }

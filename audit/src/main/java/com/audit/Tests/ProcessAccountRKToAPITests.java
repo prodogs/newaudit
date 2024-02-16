@@ -20,14 +20,16 @@ public class ProcessAccountRKToAPITests {
         this.run();
     }
 
-    public Boolean run() {
+    public void run() {
         this.accountDataRecord = this.appConfig.rkDataStore.getAccountDataRecord(apiActivityRecord);
 
         if (this.accountDataRecord == null) {
             this.noRKDatafound();
-            return false;
+            return;
         }
 
+        this.testIsTPPAccount();
+        this.testIsTPPAccountWithBalance();
         this.testAttribute(APIAttribute.PLAN_NUMBER);
         this.testAttribute(APIAttribute.FIRST_NAME);
         this.testAttribute(APIAttribute.LAST_NAME);
@@ -60,41 +62,38 @@ public class ProcessAccountRKToAPITests {
         this.testAttribute(APIAttribute.PRIM_BENE_DOB);
         this.testAttribute(APIAttribute.PRIM_BENE_SSN);
         this.testAttribute(APIAttribute.PRIM_BENE_PHONE);
-        this.testAttribute(APIAttribute.PRIM_BENE_PERCENT);
+        this.testAttribute(APIAttribute.PRIM_BENE_PERCENTAGE);
         this.testAttribute(APIAttribute.PRIM_BENE_ADDRESS1);
         this.testAttribute(APIAttribute.PRIM_BENE_CITY);
         this.testAttribute(APIAttribute.PRIM_BENE_STATE);
-        this.testAttribute(APIAttribute.PRIM_BENE_ZIP_CODE);
-        this.testAttribute(APIAttribute.CTG_BENE_ENTITY);
-        this.testAttribute(APIAttribute.CTG_BENE_RELATIONSHIP);
-        this.testAttribute(APIAttribute.CTG_BENE_FIRST_NAME);
-        this.testAttribute(APIAttribute.CTG_BENE_LAST_NAME);
-        this.testAttribute(APIAttribute.CTG_BENE_SUFFIX);
+        this.testAttribute(APIAttribute.PRIM_BENE_ZIP);
+        this.testAttribute(APIAttribute.CNTG_BENE_ENTITY);
+        this.testAttribute(APIAttribute.CNTG_BENE_RELATIONSHIP);
+        this.testAttribute(APIAttribute.CNTG_BENE_FIRST_NAME);
+        this.testAttribute(APIAttribute.CNTG_BENE_LAST_NAME);
+        this.testAttribute(APIAttribute.CNTG_BENE_SUFFIX);
         this.testAttribute(APIAttribute.CTG_BENE_GENGER);
-        this.testAttribute(APIAttribute.CTG_BENE_DOB);
-        this.testAttribute(APIAttribute.CTG_BENE_SSN);
-        this.testAttribute(APIAttribute.CTG_BENE_PHONE);
-        this.testAttribute(APIAttribute.CTG_BENE_PERCENT);
-        this.testAttribute(APIAttribute.CTG_BENE_ADDRESS1);
-        this.testAttribute(APIAttribute.CTG_BENE_CITY);
-        this.testAttribute(APIAttribute.CTG_BENE_STATE);
-        this.testAttribute(APIAttribute.CTG_BENE_ZIP_CODE);
+        this.testAttribute(APIAttribute.CNTG_BENE_DOB);
+        this.testAttribute(APIAttribute.CNTG_BENE_SSN);
+        this.testAttribute(APIAttribute.CNTG_BENE_PHONE);
+        this.testAttribute(APIAttribute.CNTG_BENE_PERCENTAGE);
+        this.testAttribute(APIAttribute.CNTG_BENE_ADDRESS1);
+        this.testAttribute(APIAttribute.CNTG_BENE_CITY);
+        this.testAttribute(APIAttribute.CNTG_BENE_STATE);
+        this.testAttribute(APIAttribute.CNTG_BENE_ZIP);
         this.testAttribute(APIAttribute.EMAIL_PREFERENCE);
-        // Test Subscription Type
-        // Test No Service Subscription to TPP IRA with Balance
 
-
-        return false;
+        return ;
 
     }
 
-    public void mismatch(APIAttribute attribute, String rkValue, String apiValue) {
+    public void mismatch(APIAttribute attribute, String message) {
 
         AccountOpenAuditReportRecord accountOpenAuditReport = new AccountOpenAuditReportRecord();
 
         AuditExceptionRecord exception = ExceptionMessages.GetExceptionMessage(attribute.toString()); // Declare the variable 'exception'
 
-        String details = String.format("API Value <%s> Different FROM RK<%s>", apiValue, rkValue);
+        String details = message;
         
         accountOpenAuditReport.field = attribute.toString();
         accountOpenAuditReport.exceptionCategory = exception.category;
@@ -104,6 +103,11 @@ public class ProcessAccountRKToAPITests {
         
         this.appConfig.accountOpenAuditReport.add(accountOpenAuditReport);
 
+    }
+
+    public void mismatch(APIAttribute attribute, String rkValue, String apiValue) {
+        String details = String.format("API Value <%s> Different FROM RK<%s>", apiValue, rkValue);
+        this.mismatch(attribute,details);
     }
 
     public Boolean testAttribute(APIAttribute attribute) {
@@ -119,12 +123,30 @@ public class ProcessAccountRKToAPITests {
         return false;
 
     }
+    
     public void noRKDatafound() {
         
         AccountOpenAuditReportRecord accountOpenAuditReport = new AccountOpenAuditReportRecord();
         accountOpenAuditReport.noRKDatafound(this.apiActivityRecord);
 
         this.appConfig.accountOpenAuditReport.add(accountOpenAuditReport);
+    }
+
+    public Boolean testIsTPPAccount() {
+        if (this.accountDataRecord.isTPPSubscribed()) {
+            return true;
+        }
+        this.mismatch(APIAttribute.TPA_NOT_SUBSCRIBED, this.accountDataRecord.getAttribute(APIAttribute.ACCOUNT_NUMBER));   
+        return false;
+    }
+
+    public Boolean testIsTPPAccountWithBalance() {
+        if (this.accountDataRecord.isTPPSubcribedWithBalance() ) {
+            return true;
+        }
+        this.mismatch(APIAttribute.TPA_NOT_SUBSCRIBED_WITH_BALANCE, this.accountDataRecord.getAttribute(APIAttribute.ACCOUNT_NUMBER));   
+        return false;
+
     }
  
 

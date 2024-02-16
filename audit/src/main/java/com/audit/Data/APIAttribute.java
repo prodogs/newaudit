@@ -52,8 +52,10 @@ public enum APIAttribute {
     CNTG_BENE_CITY("cntg_bene_city"), 
     CNTG_BENE_STATE("cntg_bene_state"), 
     CNTG_BENE_ZIP("cntg_bene_zip"), 
-    E_DELIVERY("e_delivery");
-
+    E_DELIVERY("e_delivery"),
+    TPA_NOT_SUBSCRIBED("tpa_ira_not_subscribe"),
+    TPA_NOT_SUBSCRIBED_WITH_BALANCE("tpa_ira_not_subscribe_with_balance"), 
+    ACCOUNT_NUMBER("account_number");
 
     // Fixed typo in enum constant name
 
@@ -61,5 +63,9 @@ public enum APIAttribute {
 
     private APIAttribute(String value) {
         this.value = value;
+    }
+    
+    private APIAttribute() {
+        // Empty constructor
     }
 }
