@@ -1,14 +1,12 @@
 package com.audit.Reports;
 
 import com.audit.Data.APIActivityRecord;
-import com.audit.Data.RKAccountDataRecord;
 import com.audit.Tests.AuditExceptionCategory;
-
 
 public class AccountOpenAuditReportRecord {
 
     public String field;
-    public String frequency;
+    public String frequency = "Daily";
     public String exceptionCategory;
     public String exceptionReason;
     public String exceptionDescription;
