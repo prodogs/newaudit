@@ -1,5 +1,6 @@
 
 package com.audit.Data;
+import com.audit.Data.APICallType;
 
 import org.json.JSONObject;
 
@@ -11,10 +12,6 @@ public class APIActivityRecord {
     String type;
     String stamp;
     JSONObject jsonPackage;
-
-    public String getJSONPackage() {
-        return null;
-    }
 
     public APICallType getAPICallType() {
         return APICallType.ACCOUNT_OPEN;

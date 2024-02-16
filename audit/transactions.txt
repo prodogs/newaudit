@@ -1,0 +1,39 @@
+Frequency	Compare	Exception Category 	Exception Reason
+Daily in Evening	P3 and Transaction API	Transaction Allocations	MSG_FUND_DESC_CODE_%_MISMATCH
+Daily in Evening	P3 and Transaction API	Transaction Allocations	MSG_FUND_DESC_NOT_AVAILABLE
+Daily in Evening	P3 and Transaction API	Transaction Allocations	MSG_FUND_ALLOCATION_%_TOTAL_OVER_100
+Daily in Evening	P3 and Transaction API	Transaction Allocations	MSG_FUND_ALLOCATION_%_TOTAL_UNDER_100
+Daily in Evening	P3 and Transaction API	Transaction Allocations	TRANSACTION_STATUS_RESPONSE_MSG_FOR_FAILURE'
+Daily in Evening	P3	Transaction Realignment	MSG_NO_ACCOUNT_REBALANCE_OVER_3_MONTHS
+Daily in Evening	P3 and Transaction API	Transaction Realignment	MSG_REBALANCED_FUND_TOTAL_INCORRECT_%
+Daily in Evening	P3 and Transaction Response API	Transaction Realignment	MSG_REBALANCE_FAILED_NO_KNOWN_REASON
+Daily in Evening	P3 and Transaction Response API	Transaction Realignment	MSG_REBALANCE_FAILED_KNOWN_REASON
+ 
+
+
+Plan Number
+Affiliate Number
+
+
+Frequency	Compare	Exception Category 	Exception Reason
+Daily in Evening	P3 and Transaction API	Transaction Allocations	MSG_FUND_DESC_CODE_%_MISMATCH
+Daily in Evening	P3 and Transaction API	Transaction Allocations	MSG_FUND_DESC_NOT_AVAILABLE
+Daily in Evening	P3 and Transaction API	Transaction Allocations	MSG_FUND_ALLOCATION_%_TOTAL_OVER_100
+Daily in Evening	P3 and Transaction API	Transaction Allocations	MSG_FUND_ALLOCATION_%_TOTAL_UNDER_100
+Daily in Evening	P3 and Transaction API	Transaction Allocations	TRANSACTION_STATUS_RESPONSE_MSG_FOR_FAILURE'
+Daily in Evening	P3	Transaction Realignment	MSG_NO_ACCOUNT_REBALANCE_OVER_3_MONTHS
+Daily in Evening	P3 and Transaction API	Transaction Realignment	MSG_REBALANCED_FUND_TOTAL_INCORRECT_%
+Daily in Evening	P3 and Transaction Response API	Transaction Realignment	MSG_REBALANCE_FAILED_NO_KNOWN_REASON
+Daily in Evening	P3 and Transaction Response API	Transaction Realignment	MSG_REBALANCE_FAILED_KNOWN_REASON
+
+
+Frequency	Compare	Exception Category	Exception Reason	Exception Description (OUTPUT)
+Daily in Evening	P3 and Transaction API	Transaction Allocations	MSG_FUND_DESC_CODE_%_MISMATCH	Transaction Allocation Request API Customer Fund Desc % Mismatch
+Daily in Evening	P3 and Transaction API	Transaction Allocations	MSG_FUND_DESC_NOT_AVAILABLE	Transaction Allocation Request API Customer Fund Desc Not Available
+Daily in Evening	P3 and Transaction API	Transaction Allocations	MSG_FUND_ALLOCATION_%_TOTAL_OVER_100	Transaction Allocation Request API Customer Allocation Total Over 100%
+Daily in Evening	P3 and Transaction API	Transaction Allocations	MSG_FUND_ALLOCATION_%_TOTAL_UNDER_100	Transaction Allocation Request API Customer Allocation Total Under 100%
+Daily in Evening	P3 and Transaction API	Transaction Allocations	TRANSACTION_STATUS_RESPONSE_MSG_FOR_FAILURE'	Add whatever the usual transaction response is that is sent back to GSAM on the Status API
+Daily in Evening	P3	Transaction Realignment	MSG_NO_ACCOUNT_REBALANCE_OVER_3_MONTHS	No Rebalance Update Made for Customer in Over 90 days
+Daily in Evening	P3 and Transaction API	Transaction Realignment	MSG_REBALANCED_FUND_TOTAL_INCORRECT_%	Transaction Rebalance Request API Customer Fund Total Does Not Match Allocation %
+Daily in Evening	P3 and Transaction Response API	Transaction Realignment	MSG_REBALANCE_FAILED_NO_KNOWN_REASON	Transaction Rebalance Request API Customer Rebalance Didn't Complete No Known Error
+Daily in Evening	P3 and Transaction Response API	Transaction Realignment	MSG_REBALANCE_FAILED_KNOWN_REASON	Transaction Rebalance Request API Customer Rebalance Didn't Complete "Detail Message from Response"

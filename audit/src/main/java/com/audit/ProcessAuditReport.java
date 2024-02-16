@@ -30,7 +30,7 @@ public class ProcessAuditReport {
 
             switch (record.getAPICallType()) {
                 case ACCOUNT_OPEN:
-                   ProcessAccountRKToAPITests accountRKToAPITests = new ProcessAccountRKToAPITests(appConfig, record);
+                   @SuppressWarnings("unused") ProcessAccountRKToAPITests accountRKToAPITests = new ProcessAccountRKToAPITests(appConfig, record);
 
                     break;
                 case ALLOCATION_MODEL:
