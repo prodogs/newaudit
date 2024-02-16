@@ -3,8 +3,10 @@ package com.audit.Tests;
 import com.audit.AppConfig;
 import com.audit.Data.APIActivityRecord;
 import com.audit.Data.APIAttribute;
+import com.audit.Data.ExceptionMessages;
 import com.audit.Data.RKAccountDataRecord;
 import com.audit.Reports.AccountOpenAuditReportRecord;
+import com.audit.Data.AuditExceptionRecord;
 
 public class ProcessAccountRKToAPITests {
     
@@ -12,11 +14,10 @@ public class ProcessAccountRKToAPITests {
     public APIActivityRecord apiActivityRecord ;
     public AppConfig appConfig;
 
-    public ProcessAccountRKToAPITests(
-        AppConfig appConfig, 
-        APIActivityRecord apiActivityRecord) {
+    public ProcessAccountRKToAPITests( AppConfig appConfig, APIActivityRecord apiActivityRecord) {
 
         this.apiActivityRecord = apiActivityRecord;
+        this.run();
     }
 
     public Boolean run() {
@@ -87,24 +88,36 @@ public class ProcessAccountRKToAPITests {
 
     }
 
-    public void mismatch(APIAttribute attribute) {
+    public void mismatch(APIAttribute attribute, String rkValue, String apiValue) {
 
         AccountOpenAuditReportRecord accountOpenAuditReport = new AccountOpenAuditReportRecord();
+
+        AuditExceptionRecord exception = ExceptionMessages.GetExceptionMessage(attribute.toString()); // Declare the variable 'exception'
+
+        String details = String.format("API Value <%s> Different FROM RK<%s>", apiValue, rkValue);
+        
         accountOpenAuditReport.field = attribute.toString();
-        accountOpenAuditReport.exceptionCategory = AuditExceptionCategory.MSG_ATTRIBUTE_MISMATCH;
-        accountOpenAuditReport.exceptionReason = "Attribute Mismatch";
-        accountOpenAuditReport.exceptionDescription = "Attribute Mismatch";
-        accountOpenAuditReport.combineExceptionsDescription = "Attribute Mismatch";
+        accountOpenAuditReport.exceptionCategory = exception.category;
+        accountOpenAuditReport.exceptionReason = exception.reason;
+        accountOpenAuditReport.exceptionDescription = exception.description;
+        accountOpenAuditReport.combineExceptionsDescription = details;
+        
         this.appConfig.accountOpenAuditReport.add(accountOpenAuditReport);
 
     }
 
     public Boolean testAttribute(APIAttribute attribute) {
+
+        String rkValue = this.accountDataRecord.getAttribute(attribute);
+        String apiValue = this.apiActivityRecord.getAttribute(attribute);
+
         if (this.accountDataRecord.getAttribute(attribute).equals(apiActivityRecord.getAttribute(attribute))) {
             return true;
         }
         
+        this.mismatch(attribute,rkValue,apiValue);
         return false;
+
     }
     public void noRKDatafound() {
         

@@ -5,27 +5,16 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-class AuditExceptionRecord {
 
-    String attribute;
-    String category;
-    String description;
-    String reason;
-    String combine_description;
-    public AuditExceptionRecord(String attribute, String category, String description, String reason, String combine_description) {
-        this.attribute = attribute;
-        this.category = category;
-        this.description = description;
-        this.reason = reason;
-        this.combine_description = combine_description;
-    }
-    
-}
  
 public class ExceptionMessages {
 
     public static ArrayList<AuditExceptionRecord> auditExceptions = new ArrayList<AuditExceptionRecord>();
     
+    static {
+        readCSV();
+    }
+
     public static void readCSV() {
  
         String line = "";
@@ -45,5 +34,18 @@ public class ExceptionMessages {
             e.printStackTrace();
         }
     }
+
+    public static AuditExceptionRecord GetExceptionMessage(String attribute) {
+
+        for (AuditExceptionRecord exceptionRecord : auditExceptions) {
+           if (exceptionRecord.attribute.equals(attribute)) {
+               return exceptionRecord;
+           }
+
+        }
+        return null;
+
+    }
+
 }
  
