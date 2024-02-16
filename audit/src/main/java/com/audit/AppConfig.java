@@ -1,16 +1,16 @@
 package com.audit;
 
-import com.audit.Data.RKDataStore;
+import com.audit.Data.RKAccountDataStore;
 import com.audit.Reports.AccountOpenAuditReport;
 
 public class AppConfig {
     
 
-    public RKDataStore rkDataStore;
+    public RKAccountDataStore rkDataStore;
     public AccountOpenAuditReport accountOpenAuditReport = new AccountOpenAuditReport();
     
 
     public AppConfig() {
-        rkDataStore = new RKDataStore();
+        rkDataStore = new RKAccountDataStore();
     }
 }

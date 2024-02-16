@@ -9,17 +9,16 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class RKDataStore {
+public class RKAccountDataStore {
 
     public ArrayList<RKAccountDataRecord> records = new ArrayList<RKAccountDataRecord>();
 
-    public RKDataStore() {
+    public RKAccountDataStore() {
  
         String path = System.getProperty("user.dir")+"/API_ACCOUNT.json";
         System.out.println("Path: " + path);
         this.readJsonFile(path);
     }
-
 
     public void readJsonFile(String filePath) {
         JSONParser parser = new JSONParser();
@@ -103,8 +102,6 @@ public class RKDataStore {
      
     }
 
-
-    
     public RKAccountDataRecord getAccountDataRecord(APIActivityRecord  apiActivityRecord)
     {
         for (RKAccountDataRecord record : this.records) {

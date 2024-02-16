@@ -1,7 +1,4 @@
-
 package com.audit.Data;
-import com.audit.Data.APICallType;
-
 import org.json.JSONObject;
 
 //import org.json;
@@ -13,8 +10,8 @@ public class APIActivityRecord {
     String stamp;
     JSONObject jsonPackage;
 
-    public APICallType getAPICallType() {
-        return APICallType.ACCOUNT_OPEN;
+    public com.audit.Data.APICallType getAPICallType() {
+        return com.audit.Data.APICallType.ACCOUNT_OPEN;
     }
 
     public String getAttribute(APIAttribute attribute) {

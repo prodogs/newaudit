@@ -3,13 +3,13 @@ package com.audit;
 
 import com.audit.Data.APIActivityRecord;
 import com.audit.Data.RKAccountDataRecord;
-import com.audit.Data.RKDataStore;
+import com.audit.Data.RKAccountDataStore;
 import com.audit.Tests.ProcessAccountRKToAPITests;
 
 public class ProcessAccountOpenAuditRecord {
 
     public RKAccountDataRecord accountDataRecord;
-    public RKDataStore rkDataStore = new RKDataStore();
+    public RKAccountDataStore rkDataStore = new RKAccountDataStore();
     public ProcessAccountRKToAPITests processAccountRKToAPITests;
 
     public Boolean RunTests(AppConfig appConfig,APIActivityRecord apiActivityRecord) {
