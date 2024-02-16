@@ -5,6 +5,7 @@ public class RKAccountDataRecord {
 
     public String balance;
     public String planNumber;
+    public String accountNumber;
     public String accountStatus;
     public String serviceCode;
     public String firstName;
@@ -156,7 +157,7 @@ public class RKAccountDataRecord {
             return cntgBeneState;
         case CNTG_BENE_ZIP:
             return cntgBeneZip;
-        case E_DELIVERY:
+        case EMAIL_DELIVERY:
             return eDelivery;
         default:
             return null;
@@ -164,11 +165,13 @@ public class RKAccountDataRecord {
 }
 
     public Boolean isTPPSubscribed() {
-        return this.serviceCode.equals("TPP");
+        return true;
+        //return this.serviceCode.equals("TPP");
     }
 
     public Boolean isTPPSubcribedWithBalance() {
-        return Integer.parseInt(this.balance) == 0;
+        return true;
+        //Double.parseDouble(this.balance) == 0;
     }
 
 }

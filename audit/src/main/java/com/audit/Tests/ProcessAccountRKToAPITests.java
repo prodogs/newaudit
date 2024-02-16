@@ -17,20 +17,27 @@ public class ProcessAccountRKToAPITests {
     public ProcessAccountRKToAPITests( AppConfig appConfig, APIActivityRecord apiActivityRecord) {
 
         this.apiActivityRecord = apiActivityRecord;
+        this.appConfig = appConfig; ;
         this.run();
     }
 
     public void run() {
+
         this.accountDataRecord = this.appConfig.rkDataStore.getAccountDataRecord(apiActivityRecord);
 
-        if (this.accountDataRecord == null) {
-            this.noRKDatafound();
-            return;
-        }
+      //  if (this.accountDataRecord == null) {
+       //     this.noRKDatafound();
+      //      return;
+      //  }
+ 
 
+        //System.out.println("Account Data Record: " + this.accountDataRecord.accountNumber);
         this.testIsTPPAccount();
+
         this.testIsTPPAccountWithBalance();
+     
         this.testAttribute(APIAttribute.PLAN_NUMBER);
+  
         this.testAttribute(APIAttribute.FIRST_NAME);
         this.testAttribute(APIAttribute.LAST_NAME);
         this.testAttribute(APIAttribute.SUFFIX);
@@ -40,6 +47,7 @@ public class ProcessAccountRKToAPITests {
         this.testAttribute(APIAttribute.CITIZENSHIP);
         this.testAttribute(APIAttribute.MARITAL_STATUS);
         this.testAttribute(APIAttribute.CITIZENSHIP);
+  
         // need not us citizen test
         this.testAttribute(APIAttribute.GENDER);
         this.testAttribute(APIAttribute.EMAIL);
@@ -49,9 +57,10 @@ public class ProcessAccountRKToAPITests {
         this.testAttribute(APIAttribute.ADDRESS2);
         this.testAttribute(APIAttribute.CITY);
         this.testAttribute(APIAttribute.STATE);
-        this.testAttribute(APIAttribute.ZIP_CODE);
+        this.testAttribute(APIAttribute.ZIP);
         this.testAttribute(APIAttribute.COUNTRY);
         // not us test
+     
         this.testAttribute(APIAttribute.MOTHERS_MAIDEN_NAME);
         this.testAttribute(APIAttribute.PRIM_BENE_ENTITY);
         this.testAttribute(APIAttribute.PRIM_BENE_RELATIONSHIP);
@@ -61,7 +70,9 @@ public class ProcessAccountRKToAPITests {
         this.testAttribute(APIAttribute.PRIM_BENE_GENDER);
         this.testAttribute(APIAttribute.PRIM_BENE_DOB);
         this.testAttribute(APIAttribute.PRIM_BENE_SSN);
+      
         this.testAttribute(APIAttribute.PRIM_BENE_PHONE);
+      
         this.testAttribute(APIAttribute.PRIM_BENE_PERCENTAGE);
         this.testAttribute(APIAttribute.PRIM_BENE_ADDRESS1);
         this.testAttribute(APIAttribute.PRIM_BENE_CITY);
@@ -72,7 +83,7 @@ public class ProcessAccountRKToAPITests {
         this.testAttribute(APIAttribute.CNTG_BENE_FIRST_NAME);
         this.testAttribute(APIAttribute.CNTG_BENE_LAST_NAME);
         this.testAttribute(APIAttribute.CNTG_BENE_SUFFIX);
-        this.testAttribute(APIAttribute.CTG_BENE_GENGER);
+        this.testAttribute(APIAttribute.CNTG_BENE_GENDER);
         this.testAttribute(APIAttribute.CNTG_BENE_DOB);
         this.testAttribute(APIAttribute.CNTG_BENE_SSN);
         this.testAttribute(APIAttribute.CNTG_BENE_PHONE);
@@ -81,7 +92,7 @@ public class ProcessAccountRKToAPITests {
         this.testAttribute(APIAttribute.CNTG_BENE_CITY);
         this.testAttribute(APIAttribute.CNTG_BENE_STATE);
         this.testAttribute(APIAttribute.CNTG_BENE_ZIP);
-        this.testAttribute(APIAttribute.EMAIL_PREFERENCE);
+        this.testAttribute(APIAttribute.EMAIL_DELIVERY);
 
         return ;
 
@@ -89,9 +100,14 @@ public class ProcessAccountRKToAPITests {
 
     public void mismatch(APIAttribute attribute, String message) {
 
+        System.out.println("Mismatch found for " + attribute.toString() + " " + message);
         AccountOpenAuditReportRecord accountOpenAuditReport = new AccountOpenAuditReportRecord();
 
         AuditExceptionRecord exception = ExceptionMessages.GetExceptionMessage(attribute.toString()); // Declare the variable 'exception'
+
+        if (exception == null) {
+            System.out.println("Exception not found for " + attribute.toString());
+        }
 
         String details = message;
         

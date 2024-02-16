@@ -1,5 +1,7 @@
 package com.audit;
 
+import java.util.ArrayList;
+
 import com.audit.Data.APIActivityDataStore;
 import com.audit.Data.APIActivityRecord;
 import com.audit.Tests.ProcessAccountRKToAPITests;
@@ -13,19 +15,23 @@ public class ProcessAuditReport {
     }
 
     public  void run() {
+
         System.out.println("ProcessAuditReport");
        
         APIActivityDataStore dataStore = new APIActivityDataStore();
-        APIActivityRecord records[] = dataStore.getRecords();
+        ArrayList<APIActivityRecord> records = dataStore.getRecords();
+
+        if (records == null) {
+            System.out.println("No records found");
+            return;
+        }
 
         for (APIActivityRecord record : records) {
-            System.out.println(record);
 
             switch (record.getAPICallType()) {
                 case ACCOUNT_OPEN:
-                    System.out.println("NEW_ACCOUNT");
-                    ProcessAccountRKToAPITests accountRKToAPITests = new ProcessAccountRKToAPITests(appConfig, record);
-                    accountRKToAPITests.run();
+                   ProcessAccountRKToAPITests accountRKToAPITests = new ProcessAccountRKToAPITests(appConfig, record);
+
                     break;
                 case ALLOCATION_MODEL:
                     System.out.println("ALLOCATION_MODEL");

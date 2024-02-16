@@ -1,4 +1,3 @@
-Category,Attribute,reason,Exception Description (OUTPUT),Combine Exceptions Description
 Account Opening,plan_number,MSG_PLAN_NUMBER_MISMATCH,Account Opening API Plan Number mismatch P3 Record,
 Account Opening,first_name,MSG_FIRST_NM_MISMATCH,Account Opening API Customer First Name mismatch P3 Record,
 Account Opening,last_name,MSG_LAST_NM_MISMATCH,Account Opening API Customer Last Name mismatch P3 Record,
@@ -6,7 +5,7 @@ Account Opening,suffix,MSG_NAME_SFFX,Account Opening API Customer Name Suffix mi
 Account Opening,gender,MSG_GENDER_MISMATCH,Account Opening API Customer Gender mismatch P3 Record,
 Account Opening,dob,MSG_DOB_MISMATCH,Account Opening API Customer DOB mismatch P3 Record,
 Account Opening,ssn,MSG_SSN_MISMATCH,Account Opening API Customer SSN mismatch P3 Record,
-Account Opening,marital_staus,MSG_MARITAL_STATUS_MISMATCH,Account Opening API Customer Marital Status mismatch P3 Record,
+Account Opening,marital_status,MSG_MARITAL_STATUS_MISMATCH,Account Opening API Customer Marital Status mismatch P3 Record,
 Account Opening,citizenship,MSG_CITIZENSHIP_MISMATCH,Account Opening API Customer Citizenship mismatch P3 Record,
 Account Opening,not_us_citizenship,MSG_CITIZENSHIP_NOT_US,Account Opening API Customer Not US Citizen,
 Account Opening,email,MSG_EMAIL_ADDRESS_MISMATCH,Account Opening API Customer Email Address mismatch P3 Record,
@@ -21,7 +20,7 @@ Account Opening,country,MSG_COUNTRY_MISMATCH,Account Opening API Customer Countr
 Account Opening,not_us_country,MSG_COUNTRY_NOT_US,Account Opening API Customer Country not US,
 Account Opening,mothers_maiden_name,MSG_MOTHER'S_MAIDEN_NAME_MISMATCH,Account Opening API Customer Mother's Maiden Name mismatch P3 Record,
 Primary Beneficiary,prim_bene_entity,MSG_PRIM_BENE_ENTITY_MISMATCH,Primary Beneficiary API Person Entity Name mismatch P3 Record,
-Primary Beneficiary,prime_bene_relatonship,MSG_PRIM_BENE_RELATIONSHIP_MISMATCH,Primary Beneficiary API Relationship mismatch P3 Record,
+Primary Beneficiary,primary_relationship,MSG_PRIM_BENE_RELATIONSHIP_MISMATCH,Primary Beneficiary API Relationship mismatch P3 Record,
 Primary Beneficiary,prime_bene_first_name,MSG_PRIM_BENE_FIRST_NAME_MISMATCH,Primary Beneficiary API First Name mismatch P3 Record,
 Primary Beneficiary,prim_bene_last_name,MSG_PRIM_BENE_LAST_NAME_MISMATCH,Primary Beneficiary API Last Name mismatch P3 Record,
 Primary Beneficiary,prim_bene_suffix,MSG_PRIM_BENE_SUFFIX_MISMATCH,Primary Beneficiary API Suffix mismatch P3 Record,

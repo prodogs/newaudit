@@ -18,7 +18,6 @@ public class ExceptionMessages {
         String line = "";
         String csvSplitBy = ",";
         String systemDirectory = System.getProperty("user.dir");
-        System.out.println("System Directory: " + systemDirectory);
 
         String csvFile = systemDirectory+"/exception.csv";
 
@@ -36,6 +35,8 @@ public class ExceptionMessages {
     public static AuditExceptionRecord GetExceptionMessage(String attribute) {
 
         for (AuditExceptionRecord exceptionRecord : auditExceptions) {
+          // System.out.println("Attribute: <" + attribute+">");
+           //System.out.println("ExceptionRecord: <" + exceptionRecord.attribute+">");
            if (exceptionRecord.attribute.equals(attribute)) {
                return exceptionRecord;
            }
