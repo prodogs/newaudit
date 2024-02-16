@@ -20,7 +20,7 @@ public class AccountOpenAuditReportRecord {
 
     public void noRKDatafound(APIActivityRecord record) {
 
-        this.exceptionCategory = AuditExceptionCategory.MSG_ACCOUNT_NOT_FOUND.toString()
+        this.exceptionCategory = AuditExceptionCategory.MSG_ACCOUNT_NOT_FOUND.toString();
 
     }
 
