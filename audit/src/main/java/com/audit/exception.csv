@@ -23,7 +23,7 @@ Primary Beneficiary,prim_bene_entity,MSG_PRIM_BENE_ENTITY_MISMATCH,Primary Benef
 Primary Beneficiary,prime_bene_relatonship,MSG_PRIM_BENE_RELATIONSHIP_MISMATCH,Primary Beneficiary API Relationship mismatch P3 Record,
 Primary Beneficiary,prime_bene_first_name,MSG_PRIM_BENE_FIRST_NAME_MISMATCH,Primary Beneficiary API First Name mismatch P3 Record,
 Primary Beneficiary,prim_bene_last_name,MSG_PRIM_BENE_LAST_NAME_MISMATCH,Primary Beneficiary API Last Name mismatch P3 Record,
-Primary Beneficiary,prim_bene_suffix,MSG_PRIM_BENE_SUFFIX_MISMATCH,Primary Beneficiary API Suffix mismatch P3 Record,
+Primary Beneficiary,primary_ben_suffix,MSG_PRIM_BENE_SUFFIX_MISMATCH,Primary Beneficiary API Suffix mismatch P3 Record,
 Primary Beneficiary,prim_bene_gender,MSG_PRIM_BENE_GENDER_MISMATCH,Primary Beneficiary API gender mismatch P3 Record,
 Primary Beneficiary,prim_bene_dob,MSG_PRIM_BENE_DOB_MISMATCH,Primary Beneficiary API DOB mismatch P3 Record,
 Primary Beneficiary,prime_bene_ssn,MSG_PRIM_BENE_SSN_MISMATCH,Primary Beneficiary API SSN mismatch P3 Record,
