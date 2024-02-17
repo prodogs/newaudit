@@ -1,7 +1,7 @@
 package com.audit.Data;
 
 
-public class RKAccountDataRecord {
+public class RKAccountDataRecord  extends RKDataRecord  {
 
     public String balance;
     public String planNumber;

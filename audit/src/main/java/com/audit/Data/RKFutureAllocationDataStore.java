@@ -11,7 +11,7 @@ public class RKFutureAllocationDataStore {
 
     public RKFutureAllocationDataStore() {
             readCSV();
-        }
+    }
 
      public void readCSV() {
  
@@ -31,4 +31,16 @@ public class RKFutureAllocationDataStore {
             e.printStackTrace();
         }
     }
+
+    public RKFutureAllocationRecord getFutureAllocationRecord(String id) {
+        for (RKFutureAllocationRecord record : records) {
+            if (record.getAttribute(APIAttribute.FUTURE_ALLOCATION_ID).equals(id)) {
+                return record;
+            }
+        }
+        return null;
+    }
+
+
+
 }

@@ -3,27 +3,20 @@ package com.audit.Tests;
 import com.audit.AppConfig;
 import com.audit.Data.APIActivityRecord;
 import com.audit.Data.APIAttribute;
-import com.audit.Data.ExceptionMessages;
 import com.audit.Data.RKAccountDataRecord;
 import com.audit.Reports.AccountOpenAuditReportRecord;
-import com.audit.Data.AuditExceptionRecord;
 
-public class ProcessAccountRKToAPITests {
+
+public class ProcessAccountRKToAPITests extends ProcessTests {
     
-    public RKAccountDataRecord accountDataRecord ;   
-    public APIActivityRecord apiActivityRecord ;
-    public AppConfig appConfig;
-
     public ProcessAccountRKToAPITests( AppConfig appConfig, APIActivityRecord apiActivityRecord) {
-
-        this.apiActivityRecord = apiActivityRecord;
-        this.appConfig = appConfig; ;
+        super(appConfig, apiActivityRecord);
         this.run();
     }
 
     public void run() {
 
-        this.accountDataRecord = this.appConfig.rkDataStore.getAccountDataRecord(apiActivityRecord);
+        this.dataRecord = this.appConfig.rkDataStore.getAccountDataRecord(apiActivityRecord);
 
       //  if (this.accountDataRecord == null) {
        //     this.noRKDatafound();
@@ -33,11 +26,9 @@ public class ProcessAccountRKToAPITests {
 
         //System.out.println("Account Data Record: " + this.accountDataRecord.accountNumber);
         this.testIsTPPAccount();
-
         this.testIsTPPAccountWithBalance();
      
         this.testAttribute(APIAttribute.PLAN_NUMBER);
-  
         this.testAttribute(APIAttribute.FIRST_NAME);
         this.testAttribute(APIAttribute.LAST_NAME);
         this.testAttribute(APIAttribute.SUFFIX);
@@ -97,72 +88,33 @@ public class ProcessAccountRKToAPITests {
         return ;
 
     }
-
-    public void mismatch(APIAttribute attribute, String message) {
-
-        System.out.println("Mismatch found for " + attribute.toString() + " " + message);
-        AccountOpenAuditReportRecord accountOpenAuditReport = new AccountOpenAuditReportRecord();
-
-        AuditExceptionRecord exception = ExceptionMessages.GetExceptionMessage(attribute.toString()); // Declare the variable 'exception'
-
-        if (exception == null) {
-            System.out.println("Exception not found for " + attribute.toString());
-        }
-
-        String details = message;
-        
-        accountOpenAuditReport.field = attribute.toString();
-        accountOpenAuditReport.exceptionCategory = exception.category;
-        accountOpenAuditReport.exceptionReason = exception.reason;
-        accountOpenAuditReport.exceptionDescription = exception.description;
-        accountOpenAuditReport.combineExceptionsDescription = details;
-        
-        this.appConfig.accountOpenAuditReport.add(accountOpenAuditReport);
-
-    }
-
-    public void mismatch(APIAttribute attribute, String rkValue, String apiValue) {
-        String details = String.format("API Value <%s> Different FROM RK<%s>", apiValue, rkValue);
-        this.mismatch(attribute,details);
-    }
-
-    public Boolean testAttribute(APIAttribute attribute) {
-
-        String rkValue = this.accountDataRecord.getAttribute(attribute);
-        String apiValue = this.apiActivityRecord.getAttribute(attribute);
-
-        if (this.accountDataRecord.getAttribute(attribute).equals(apiActivityRecord.getAttribute(attribute))) {
-            return true;
-        }
-        
-        this.mismatch(attribute,rkValue,apiValue);
-        return false;
-
-    }
     
     public void noRKDatafound() {
-        
+
         AccountOpenAuditReportRecord accountOpenAuditReport = new AccountOpenAuditReportRecord();
         accountOpenAuditReport.noRKDatafound(this.apiActivityRecord);
-
         this.appConfig.accountOpenAuditReport.add(accountOpenAuditReport);
     }
 
     public Boolean testIsTPPAccount() {
-        if (this.accountDataRecord.isTPPSubscribed()) {
+        RKAccountDataRecord accountDataRecord; // Declare the variable
+        accountDataRecord = (RKAccountDataRecord) this.dataRecord; // Assign a value to it
+        if (accountDataRecord.isTPPSubscribed()) {
             return true;
         }
-        this.mismatch(APIAttribute.TPA_NOT_SUBSCRIBED, this.accountDataRecord.getAttribute(APIAttribute.ACCOUNT_NUMBER));   
+        this.mismatch(APIAttribute.TPA_NOT_SUBSCRIBED, this.dataRecord.getAttribute(APIAttribute.ACCOUNT_NUMBER));   
         return false;
     }
 
     public Boolean testIsTPPAccountWithBalance() {
-        if (this.accountDataRecord.isTPPSubcribedWithBalance() ) {
+
+        RKAccountDataRecord accountDataRecord; // Declare the variable
+        accountDataRecord = (RKAccountDataRecord) this.dataRecord; // Assign a value to it
+        if (accountDataRecord.isTPPSubcribedWithBalance() ) {
             return true;
         }
-        this.mismatch(APIAttribute.TPA_NOT_SUBSCRIBED_WITH_BALANCE, this.accountDataRecord.getAttribute(APIAttribute.ACCOUNT_NUMBER));   
+        this.mismatch(APIAttribute.TPA_NOT_SUBSCRIBED_WITH_BALANCE, accountDataRecord.getAttribute(APIAttribute.ACCOUNT_NUMBER));   
         return false;
-
     }
  
 

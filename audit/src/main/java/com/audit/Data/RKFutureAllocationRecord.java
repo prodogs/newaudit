@@ -1,15 +1,36 @@
 package com.audit.Data;
 
-public class RKFutureAllocationRecord {
+import java.util.ArrayList;
 
-    public String id;
-    public String fundName;
-    public String fundPercent;
+public class RKFutureAllocationRecord extends RKDataRecord {
 
-    public RKFutureAllocationRecord(String id, String fundName, String fundPercent) {
-        this.id = id;
-        this.fundName = fundName;
-        this.fundPercent = fundPercent;
+    public ArrayList<RKFundAllocationRecord> fundAllocations;
+
+    public RKFutureAllocationRecord() {
+        this.fundAllocations = new ArrayList<RKFundAllocationRecord>();
+    }
+
+    public RKFundAllocationRecord getFundAllocation(String fundCode) {
+        for (RKFundAllocationRecord record : fundAllocations) {
+            if (record.getAttributes(APIAttribute.FUTURE_ALLOCATION_FUND_CODE).equals(fundCode)) {
+                return record;
+            }
+        }
+        return null;
+    }
+
+    public Double allocationTotal() {
+        Double total = 0.0;
+        for (RKFundAllocationRecord record : fundAllocations) {
+            total += Double.parseDouble(record.getAttributes(APIAttribute.FUTURE_ALLOCATION_FUND_PERCENT));
+        }
+        return total;
     }
     
+
+    public void addFundAllocation(String fundName, String fundPercent) {
+        this.fundAllocations.add(new RKFundAllocationRecord(fundName, fundPercent));
+    }   
+
+
 }

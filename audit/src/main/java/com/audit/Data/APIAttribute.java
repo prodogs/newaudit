@@ -56,7 +56,10 @@ public enum APIAttribute {
     EMAIL_DELIVERY("e_delivery"),
     TPA_NOT_SUBSCRIBED("tpa_ira_not_subscribed"),
     TPA_NOT_SUBSCRIBED_WITH_BALANCE("tpa_ira_not_subscribed_with_balance"), 
-    ACCOUNT_NUMBER("plan_number"); // change back t account_number
+    ACCOUNT_NUMBER("plan_number"), // change back t account_number
+    FUTURE_ALLOCATION_ID("id"),
+    FUTURE_ALLOCATION_FUND_CODE("fund_name"),
+    FUTURE_ALLOCATION_FUND_PERCENT("fund_percent");
 
     // Fixed typo in enum constant name
 
