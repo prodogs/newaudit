@@ -36,8 +36,8 @@ public class APIActivityDataStore {
                 while ((values = csvReader.readNext()) != null) {
                     APIActivityRecord activityRecord = new APIActivityRecord();
                     activityRecord.id = values[0];
-                    activityRecord.type = values[1];
-                    activityRecord.stamp = values[2];
+                    activityRecord.type = values[2];
+                    activityRecord.stamp = values[1];
                     String str = values[3];     
                     JSONObject json = new JSONObject(str);
                     activityRecord.jsonPackage = json;

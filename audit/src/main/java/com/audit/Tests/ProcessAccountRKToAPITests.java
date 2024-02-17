@@ -1,10 +1,10 @@
 package com.audit.Tests;
 
-import com.audit.AppConfig;
 import com.audit.Data.APIActivityRecord;
 import com.audit.Data.APIAttribute;
 import com.audit.Data.RKAccountDataRecord;
 import com.audit.Reports.AccountOpenAuditReportRecord;
+import com.controllers.AppConfig;
 
 
 public class ProcessAccountRKToAPITests extends ProcessTests {

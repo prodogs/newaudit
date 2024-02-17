@@ -8,6 +8,20 @@
             "type": "java",
             "name": "App",
             "request": "launch",
+            "mainClass": "com.controllers.App",
+            "projectName": "audit"
+        },
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "com.audit.controllers.App",
+            "projectName": "audit"
+        },
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
             "mainClass": "com.audit.App",
             "projectName": "audit"
         }

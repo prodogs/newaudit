@@ -1,11 +1,11 @@
 package com.audit.Tests;
 
-import com.audit.AppConfig;
 import com.audit.Data.APIActivityRecord;
 import com.audit.Data.APIAttribute;
 import com.audit.Data.RKFundAllocationRecord;
 import com.audit.Data.RKFutureAllocationDataStore;
 import com.audit.Data.RKFutureAllocationRecord;
+import com.controllers.AppConfig;
 
 public class ProcessFutureAllocationTests  extends ProcessTests {
 
@@ -14,7 +14,7 @@ public class ProcessFutureAllocationTests  extends ProcessTests {
   
         RKFutureAllocationDataStore allocationStore = new RKFutureAllocationDataStore();
 
-        this.dataRecord = allocationStore.getFutureAllocationRecord(apiActivityRecord.getAttribute(APIAttribute.FUTURE_ALLOCATION_ID));
+        this.dataRecord = allocationStore.getFutureAllocationRecord(apiActivityRecord.getAttribute(APIAttribute.ID));
 
         this.run();
     }
@@ -23,7 +23,7 @@ public class ProcessFutureAllocationTests  extends ProcessTests {
     public void run() {
 
         if (this.dataRecord == null) {
-            System.out.println("Future Allocation Record not found");
+            System.out.println("Future Allocation Record not found for " + this.apiActivityRecord.getAttribute(APIAttribute.ID));
             return;
         }   
 
@@ -38,6 +38,7 @@ public class ProcessFutureAllocationTests  extends ProcessTests {
         }
 
         for(RKFundAllocationRecord fundAllocation : futureAllocationRecord.fundAllocations) {
+            
             
         }
 

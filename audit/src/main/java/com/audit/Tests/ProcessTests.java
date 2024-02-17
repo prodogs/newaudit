@@ -1,11 +1,11 @@
 package com.audit.Tests;
 
-import com.audit.AppConfig;
 import com.audit.Data.APIActivityRecord;
 import com.audit.Data.APIAttribute;
 import com.audit.Data.ExceptionMessages;
 import com.audit.Data.RKDataRecord;
 import com.audit.Reports.AccountOpenAuditReportRecord;
+import com.controllers.AppConfig;
 import com.audit.Data.AuditExceptionRecord;
 
 public class ProcessTests {

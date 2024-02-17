@@ -1,4 +1,4 @@
-package com.audit;
+package com.audit.Data;
 
 public class AuditReportExceptions {
     

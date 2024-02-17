@@ -1,10 +1,11 @@
-package com.audit;
+package com.controllers;
 
 import java.util.ArrayList;
 
 import com.audit.Data.APIActivityDataStore;
 import com.audit.Data.APIActivityRecord;
 import com.audit.Tests.ProcessAccountRKToAPITests;
+import com.audit.Tests.ProcessFutureAllocationTests;
 
 public class ProcessAuditReport {
 
@@ -30,11 +31,11 @@ public class ProcessAuditReport {
 
             switch (record.getAPICallType()) {
                 case ACCOUNT_OPEN:
-                   @SuppressWarnings("unused") ProcessAccountRKToAPITests accountRKToAPITests = new ProcessAccountRKToAPITests(appConfig, record);
-
+                   ProcessAccountRKToAPITests accountRKToAPITests = new ProcessAccountRKToAPITests(appConfig, record);
                     break;
                 case ALLOCATION_MODEL:
-                    System.out.println("ALLOCATION_MODEL");
+                   // System.out.println("ALLOCATION_MODEL");
+                    ProcessFutureAllocationTests fundTests = new ProcessFutureAllocationTests(appConfig, record);
                     break;
                 case PARTICIPANT_DATA:
                     System.out.println("PARTICIPANT_DATA");
