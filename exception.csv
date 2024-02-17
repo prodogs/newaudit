@@ -50,3 +50,11 @@ Contingent Beneficiary,ctg_bene_zip,MSG_CNTG_BENE_ZIP_CODE_MISMATCH,Contingent B
 Service Subscription,tpa_ira_not_subscribed,MSG_TPP_IRA_NOT_SUBSCRIBED,Account Opening TPP IRA Service Customer Not Subscribed,
 Service Subscription,tpa_ira_not_subscribed_with_balance,MSG_TPP_IRA_NOT_SUBSCRIBED_WITH_BALANCE,TPP IRA Service Customer With Balance Is Not Subscribed,
 Edelivery Capture,edelivery,MSG_EDELIVERY_SELECTION_MISMATCH,Account Opening API Customer Edelivery Preference MisMatch,
+Transaction Allocations,greater_than_100,MSG_FUND_ALLOCATION_%_TOTAL_OVER_100,Transaction Allocation Request API Customer Allocation Total Over 100%,
+Transaction Allocations,less_than_100,MSG_FUND_ALLOCATION_%_TOTAL_UNDER_100,Transaction Allocation Request API Customer Allocation Total Under 100%,
+Transaction Allocations,fund_code_percent_mismatch,MSG_FUND_DESC_CODE_%_MISMATCH,Transaction Allocation Request API Customer Fund Desc % Mismatch,
+Transaction Allocations,allocation_transaction_failure,TRANSACTION_STATUS_RESPONSE_MSG_FOR_FAILURE,Add whatever the usual transaction response is that is sent back to GSAM on the Status API
+Transaction Realignment,no_account_balance_over_3_months,MSG_NO_ACCOUNT_REBALANCE_OVER_3_MONTHS,No Rebalance Update Made for Customer in Over 90 days,
+Transaction Realignment,rebalaced_fund_total_incorrect_percent,MSG_REBALANCED_FUND_TOTAL_INCORRECT_%,Transaction Rebalance Request API Customer Fund Total Does Not Match Allocation %,
+Transaction Realignment,rebalance_failed_unkown,MSG_REBALANCE_FAILED_NO_KNOWN_REASON,Transaction Rebalance Request API Customer Rebalance Didn't Complete No Known Error,
+Transaction Realignment,rebalaced_failed_known,MSG_REBALANCE_FAILED_KNOWN_REASON,Transaction Rebalance Request API Customer Rebalance Didn't Complete "Detail Message from Response"",

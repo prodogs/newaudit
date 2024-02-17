@@ -4,17 +4,17 @@ import com.audit.Data.APIActivityRecord;
 import com.audit.Data.APIAttribute;
 import com.audit.Data.ExceptionMessages;
 import com.audit.Data.RKDataRecord;
-import com.audit.Reports.AccountOpenAuditReportRecord;
+import com.audit.Reports.AuditReportRecord;
 import com.controllers.AppConfig;
 import com.audit.Data.AuditExceptionRecord;
 
-public class ProcessTests {
+public class ProcessRKToAPITests {
     
     public RKDataRecord dataRecord ;   
     public APIActivityRecord apiActivityRecord ;
     public AppConfig appConfig;
 
-    public ProcessTests( AppConfig appConfig, APIActivityRecord apiActivityRecord) {
+    public ProcessRKToAPITests( AppConfig appConfig, APIActivityRecord apiActivityRecord) {
         this.apiActivityRecord = apiActivityRecord;
         this.appConfig = appConfig; ;
     }
@@ -22,7 +22,7 @@ public class ProcessTests {
     public void mismatch(APIAttribute attribute, String message) {
 
         System.out.println("Mismatch found for " + attribute.toString() + " " + message);
-        AccountOpenAuditReportRecord accountOpenAuditReport = new AccountOpenAuditReportRecord();
+        AuditReportRecord accountOpenAuditReport = new AuditReportRecord();
 
         AuditExceptionRecord exception = ExceptionMessages.GetExceptionMessage(attribute.toString()); // Declare the variable 'exception'
 

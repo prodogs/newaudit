@@ -1,21 +1,8 @@
 package com.audit.Tests;
 
 import java.util.ArrayList;
-
-import com.audit.Data.APIAttribute;
+import com.audit.Data.AuditExceptionRecord;
  
-class AuditExceptionRecord {
-
-    APIAttribute attribute;
-    String category;
-    String message;
-
-    public AuditExceptionRecord(APIAttribute attribute, AuditExceptionCategory category, String message) {
-        this.attribute= attribute;
-         this.message = message;
-    }
-    
-}
 
 public class AuditExceptionCategories {
     

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import com.audit.Data.APIActivityDataStore;
 import com.audit.Data.APIActivityRecord;
 import com.audit.Tests.ProcessAccountRKToAPITests;
-import com.audit.Tests.ProcessFutureAllocationTests;
+import com.audit.Tests.ProcessRKFutureAllocationToAPITests;
 
 public class ProcessAuditReport {
 
@@ -35,7 +35,7 @@ public class ProcessAuditReport {
                     break;
                 case ALLOCATION_MODEL:
                    // System.out.println("ALLOCATION_MODEL");
-                    ProcessFutureAllocationTests fundTests = new ProcessFutureAllocationTests(appConfig, record);
+                    ProcessRKFutureAllocationToAPITests fundTests = new ProcessRKFutureAllocationToAPITests(appConfig, record);
                     break;
                 case PARTICIPANT_DATA:
                     System.out.println("PARTICIPANT_DATA");

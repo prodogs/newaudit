@@ -3,11 +3,11 @@ package com.audit.Tests;
 import com.audit.Data.APIActivityRecord;
 import com.audit.Data.APIAttribute;
 import com.audit.Data.RKAccountDataRecord;
-import com.audit.Reports.AccountOpenAuditReportRecord;
+import com.audit.Reports.AuditReportRecord;
 import com.controllers.AppConfig;
 
 
-public class ProcessAccountRKToAPITests extends ProcessTests {
+public class ProcessAccountRKToAPITests extends ProcessRKToAPITests {
     
     public ProcessAccountRKToAPITests( AppConfig appConfig, APIActivityRecord apiActivityRecord) {
         super(appConfig, apiActivityRecord);
@@ -91,8 +91,8 @@ public class ProcessAccountRKToAPITests extends ProcessTests {
     
     public void noRKDatafound() {
 
-        AccountOpenAuditReportRecord accountOpenAuditReport = new AccountOpenAuditReportRecord();
-        accountOpenAuditReport.noRKDatafound(this.apiActivityRecord);
+       AuditReportRecord accountOpenAuditReport = new AuditReportRecord();
+        //accountOpenAuditReport.noRKDatafound(this.apiActivityRecord);
         this.appConfig.accountOpenAuditReport.add(accountOpenAuditReport);
     }
 
@@ -118,11 +118,4 @@ public class ProcessAccountRKToAPITests extends ProcessTests {
     }
  
 
-
-
 }
-
-
-
-
-

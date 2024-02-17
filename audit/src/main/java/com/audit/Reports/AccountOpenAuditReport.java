@@ -1,12 +1,13 @@
 package com.audit.Reports;
 
-import java.util.ArrayList;
+public class AccountOpenAuditReport extends AuditReport {
 
-public class AccountOpenAuditReport {
+    public AccountOpenAuditReport() {
+        super();
+ 
+    }
 
-    public ArrayList<AccountOpenAuditReportRecord> reportRecords = new ArrayList<AccountOpenAuditReportRecord>();
-
-    public void add(AccountOpenAuditReportRecord record) {
+    public void add(AuditReportRecord record) {
         this.reportRecords.add(record);
     }
 
@@ -14,7 +15,7 @@ public class AccountOpenAuditReport {
         System.out.println("---------------------------------------------------------------------------------------");
         System.out.println("API Audit Report: Account Open Audit Report");
         System.out.println("---------------------------------------------------------------------------------------");
-        for (AccountOpenAuditReportRecord record : reportRecords) {
+        for (AuditReportRecord record : this.reportRecords) {
             System.out.println(record.field + " " + record.frequency + " " + record.exceptionCategory + " " + record.exceptionReason + " " + record.exceptionDescription + " " + record.combineExceptionsDescription);
         }
         System.out.println("---------------------------------------------------------------------------------------");

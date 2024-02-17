@@ -4,17 +4,17 @@ import com.audit.Data.APIActivityRecord;
 import com.audit.Data.APIAttribute;
 import com.audit.Data.RKFutureAllocationDataStore;
 import com.audit.Data.RKFutureAllocationRecord;
-import com.audit.Tests.ProcessFutureAllocationTests;
+import com.audit.Tests.ProcessRKFutureAllocationToAPITests;
 
 public class ProcessFutureAllocationAuditRecord {
 
     public APIActivityRecord apiActivityRecord;
     public RKFutureAllocationRecord futureAllocationRecord;
-    public ProcessFutureAllocationTests processFutureAllocationTests;
+    public ProcessRKFutureAllocationToAPITests processFutureAllocationTests;
 
     public ProcessFutureAllocationAuditRecord(AppConfig appConfig,APIActivityRecord apiActivityRecord) {
         this.apiActivityRecord = apiActivityRecord;
-        this.processFutureAllocationTests = new ProcessFutureAllocationTests(appConfig,apiActivityRecord);
+        this.processFutureAllocationTests = new ProcessRKFutureAllocationToAPITests(appConfig,apiActivityRecord);
     }
 
     public void run() {
