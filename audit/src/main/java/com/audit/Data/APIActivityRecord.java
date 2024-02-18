@@ -2,6 +2,9 @@ package com.audit.Data;
 
 import org.json.JSONObject;
 
+
+// Proxy for row in the API_Audit table
+//
 public class APIActivityRecord {
 
     String id;

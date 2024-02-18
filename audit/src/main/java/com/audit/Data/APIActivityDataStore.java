@@ -8,8 +8,8 @@ import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 
 
-// Class to Read API Activity Database Table
-// uses CSV Fil
+// Proxy for DataStore to retrieve API Records based upon date range
+//
 public class APIActivityDataStore {
 
 
