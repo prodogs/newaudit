@@ -34,7 +34,6 @@ public class ProcessAuditReport {
                    ProcessAccountRKToAPITests accountRKToAPITests = new ProcessAccountRKToAPITests(appConfig, record);
                     break;
                 case ALLOCATION_MODEL:
-                   // System.out.println("ALLOCATION_MODEL");
                     ProcessRKFutureAllocationToAPITests fundTests = new ProcessRKFutureAllocationToAPITests(appConfig, record);
                     break;
                 case PARTICIPANT_DATA:
@@ -49,4 +48,12 @@ public class ProcessAuditReport {
             }   
         } 
     }
+
+    public static void Publish(AppConfig appConfig) {
+        
+        appConfig.transactionAuditReport.print();
+        appConfig.accountOpenAuditReport.print();
+    }
+
+
 }

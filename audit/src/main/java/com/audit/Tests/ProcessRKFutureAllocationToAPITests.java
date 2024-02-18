@@ -68,7 +68,7 @@ public class ProcessRKFutureAllocationToAPITests  extends ProcessRKToAPITests {
         transAuditReport.exceptionReason = exception.reason;
         transAuditReport.exceptionDescription = exception.description;
         transAuditReport.combineExceptionsDescription = details;
-        this.appConfig.accountOpenAuditReport.add(transAuditReport);
+        this.appConfig.transactionAuditReport.add(transAuditReport);
 
     }
 
@@ -93,9 +93,7 @@ public class ProcessRKFutureAllocationToAPITests  extends ProcessRKToAPITests {
         transAuditReport.exceptionReason = exception.reason;
         transAuditReport.exceptionDescription = exception.description;
         transAuditReport.combineExceptionsDescription = details;
-        this.appConfig.accountOpenAuditReport.add(transAuditReport);
+        this.appConfig.transactionAuditReport.add(transAuditReport);
     }   
 
-
-    
 }
