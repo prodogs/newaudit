@@ -12,9 +12,7 @@ public class AccountOpenAuditReportRecord extends AuditReportRecord {
     public void noRKDatafound(APIActivityRecord record) {
 
         this.exceptionCategory = AuditExceptionCategory.MSG_ACCOUNT_NOT_FOUND.toString();
-
     }
 
- 
 }
 

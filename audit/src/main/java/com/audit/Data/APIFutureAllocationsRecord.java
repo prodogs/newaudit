@@ -4,6 +4,4 @@ public class APIFutureAllocationsRecord extends APIActivityRecord{
     public APIFutureAllocationsRecord() {
         super();
     }
-
-
 }

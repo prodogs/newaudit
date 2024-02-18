@@ -1,7 +1,6 @@
 package com.audit.Data;
-import org.json.JSONObject;
 
-//import org.json;
+import org.json.JSONObject;
 
 public class APIActivityRecord {
 
@@ -10,7 +9,12 @@ public class APIActivityRecord {
     String stamp;
     JSONObject jsonPackage;
 
-    public com.audit.Data.APICallType getAPICallType() {
+    public Boolean isFailureResponse() {
+        // check to see if the API Returned Failure Status
+        return false;
+    }
+
+    public APICallType getAPICallType() {
 
         if (this.type.equals("ACCOUNT")) {
             return com.audit.Data.APICallType.ACCOUNT_OPEN;
@@ -19,8 +23,6 @@ public class APIActivityRecord {
 
         return com.audit.Data.APICallType.ACCOUNT_OPEN;
     }
-
-
 
     public String getAttribute(APIAttribute attribute) {
 
@@ -33,7 +35,5 @@ public class APIActivityRecord {
 
         return value.toString();
     }
-
-
     
 }

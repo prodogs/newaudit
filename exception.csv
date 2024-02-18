@@ -58,3 +58,4 @@ Transaction Realignment,no_account_balance_over_3_months,MSG_NO_ACCOUNT_REBALANC
 Transaction Realignment,rebalaced_fund_total_incorrect_percent,MSG_REBALANCED_FUND_TOTAL_INCORRECT_%,Transaction Rebalance Request API Customer Fund Total Does Not Match Allocation %,
 Transaction Realignment,rebalance_failed_unkown,MSG_REBALANCE_FAILED_NO_KNOWN_REASON,Transaction Rebalance Request API Customer Rebalance Didn't Complete No Known Error,
 Transaction Realignment,rebalaced_failed_known,MSG_REBALANCE_FAILED_KNOWN_REASON,Transaction Rebalance Request API Customer Rebalance Didn't Complete "Detail Message from Response"",
+Account Opening,no_account_found,MSG_NO_ACCOUNT_FOUND,No Account Found

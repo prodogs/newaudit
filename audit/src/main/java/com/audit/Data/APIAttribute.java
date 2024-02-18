@@ -66,6 +66,7 @@ public enum APIAttribute {
     FUTURE_ALLOCATION_FUND_PERCENT_MISMATCH("fund_code_percent_mismatch"),
     FUTURE_ALLOCATION_FUND_DESC_NOT_AVAIL("fund_desc_not_avail"),
     FUTURE_ALLOCATION_FAILURE("allocation_transaction_failure"),
+    NO_ACCOUNT_FOUND("no_account_found"),
     NO_ACCOUNT_BALANCE_OVER_3_MONTHS("no_account_balance_over_3_months"),
     REBALANCE_FUND_TOTAL_INCORRECT_PERCENT("rebalaced_fund_total_incorrect_percent"),
     REBALANCE_FAILED_UNKNOWN( "rebalance_failed_unkown"),

@@ -10,6 +10,9 @@ import com.audit.Data.RKFutureAllocationRecord;
 import com.audit.Reports.AuditReportRecord;
 import com.controllers.AppConfig;
 
+
+// Class Responsible to Handle all tests related to Allocation Requests or Realiangment Requests
+
 public class ProcessRKFutureAllocationToAPITests  extends ProcessRKToAPITests {
 
     public ProcessRKFutureAllocationToAPITests(AppConfig appConfig,APIActivityRecord apiActivityRecord) {
@@ -30,6 +33,10 @@ public class ProcessRKFutureAllocationToAPITests  extends ProcessRKToAPITests {
             return;
         }   
 
+        if (this.apiActivityRecord.isFailureResponse()) {
+            this.failureResponse();
+            return;
+        }
         RKFutureAllocationRecord futureAllocationRecord = (RKFutureAllocationRecord) this.dataRecord;
 
         if (futureAllocationRecord.allocationTotal() > 100) {
@@ -39,18 +46,40 @@ public class ProcessRKFutureAllocationToAPITests  extends ProcessRKToAPITests {
             this.allocationsLessThan100();
         }
 
-        for(RKFundAllocationRecord fundAllocation : futureAllocationRecord.fundAllocations) {
-            
-            
+        for(RKFundAllocationRecord fundAllocation : futureAllocationRecord.fundAllocations) {             
         }
         
+    }
 
+
+    public void failureResponse() {
+        AuditReportRecord transAuditReport = new AuditReportRecord();
+
+        String attribute = APIAttribute.FUTURE_ALLOCATION_FAILURE.toString();
+
+        AuditExceptionRecord exception = ExceptionMessages.GetExceptionMessage(attribute);
+
+        if (exception == null) {
+            System.out.println("Exception not found for " + attribute.toString());
+            return;
+        }
+
+        String details = "Failure Response";
+
+        transAuditReport.field = attribute.toString();
+
+        transAuditReport.exceptionCategory = exception.category;
+        transAuditReport.exceptionReason = exception.reason;
+        transAuditReport.exceptionDescription = exception.description;
+        transAuditReport.combineExceptionsDescription = details;
+
+        this.appConfig.transactionAuditReport.add(transAuditReport);
 
     }
 
 
     public void allocationsGreatherThan100() {
-        System.out.println("Allocation Total is greater than 100");
+        //System.out.println("Allocation Total is greater than 100");
         AuditReportRecord transAuditReport = new AuditReportRecord();
 
         String attribute = APIAttribute.FUTURE_ALLOCATION_GREATER_100.toString();
@@ -73,9 +102,9 @@ public class ProcessRKFutureAllocationToAPITests  extends ProcessRKToAPITests {
     }
 
     public void allocationsLessThan100() {
-        System.out.println("Allocation Total is less than 100");
+       // System.out.println("Allocation Total is less than 100");
 
-        System.out.println("Allocation Total is greater than 100");
+        //System.out.println("Allocation Total is greater than 100");
         AuditReportRecord transAuditReport = new AuditReportRecord();
 
         String attribute = APIAttribute.FUTURE_ALLOCATION_LESS_100.toString();

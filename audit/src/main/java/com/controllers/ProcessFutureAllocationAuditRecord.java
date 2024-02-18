@@ -20,8 +20,6 @@ public class ProcessFutureAllocationAuditRecord {
     public void run() {
         RKFutureAllocationDataStore allocationStore = new RKFutureAllocationDataStore();
         this.futureAllocationRecord = allocationStore.getFutureAllocationRecord(apiActivityRecord.getAttribute(APIAttribute.FUTURE_ALLOCATION_ID));
-
-   
     }
     
 }

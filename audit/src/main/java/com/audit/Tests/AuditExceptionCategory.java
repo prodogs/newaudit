@@ -2,6 +2,8 @@ package com.audit.Tests;
 
 import com.audit.Data.APIAttribute;
 
+// List of All the Exception Categories
+
 public enum AuditExceptionCategory {
     MSG_ACCOUNT_NUMBER_MISMATCH(1),
     MSG_ACCOUNT_NOT_FOUND(66    ),   

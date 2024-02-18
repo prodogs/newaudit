@@ -8,6 +8,8 @@ import com.audit.Reports.AuditReportRecord;
 import com.controllers.AppConfig;
 import com.audit.Data.AuditExceptionRecord;
 
+// Parent Class For All Test Classes
+//
 public class ProcessRKToAPITests {
     
     public RKDataRecord dataRecord ;   
@@ -21,7 +23,7 @@ public class ProcessRKToAPITests {
 
     public void mismatch(APIAttribute attribute, String message) {
 
-        System.out.println("Mismatch found for " + attribute.toString() + " " + message);
+        //System.out.println("Mismatch found for " + attribute.toString() + " " + message);
         AuditReportRecord accountOpenAuditReport = new AuditReportRecord();
 
         AuditExceptionRecord exception = ExceptionMessages.GetExceptionMessage(attribute.toString()); // Declare the variable 'exception'
@@ -59,5 +61,4 @@ public class ProcessRKToAPITests {
 
     }
     
-
 }

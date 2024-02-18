@@ -16,10 +16,6 @@ public class ProcessAccountOpenAuditRecord {
         
         this.accountDataRecord = rkDataStore.getAccountDataRecord(apiActivityRecord);
 
-        if (this.accountDataRecord == null) {
-            return false;
-        }
-
         this.processAccountRKToAPITests = new ProcessAccountRKToAPITests(appConfig,apiActivityRecord);
         return false;
 

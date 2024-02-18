@@ -3,14 +3,13 @@ package com.audit.Data;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import org.json.JSONObject;
-
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 
 
-
+// Class to Read API Activity Database Table
+// uses CSV Fil
 public class APIActivityDataStore {
 
 

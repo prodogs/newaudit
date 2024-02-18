@@ -9,13 +9,11 @@ public class AccountOpenAuditReport extends AuditReport {
 
     public AccountOpenAuditReport() {
         super();
- 
     }
 
     public void add(AuditReportRecord record) {
         this.reportRecords.add(record);
     }
-
 
     public void print(Workbook wb) throws IOException { {
         Worksheet ws = wb.newWorksheet("Account Open");
@@ -48,8 +46,4 @@ public class AccountOpenAuditReport extends AuditReport {
         ws.close();
     }
 }
-
-
-
-
 }

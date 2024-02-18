@@ -17,7 +17,7 @@ public class ProcessAuditReport {
 
     public  void run() {
 
-        System.out.println("ProcessAuditReport");
+        //System.out.println("ProcessAuditReport");
        
         APIActivityDataStore dataStore = new APIActivityDataStore();
         ArrayList<APIActivityRecord> records = dataStore.getRecords();
@@ -48,12 +48,5 @@ public class ProcessAuditReport {
             }   
         } 
     }
-
-    public static void Publish(AppConfig appConfig) {
-        
-        appConfig.transactionAuditReport.print();
-        appConfig.accountOpenAuditReport.print();
-    }
-
 
 }

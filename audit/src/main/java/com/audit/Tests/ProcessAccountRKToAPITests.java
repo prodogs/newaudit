@@ -2,11 +2,15 @@ package com.audit.Tests;
 
 import com.audit.Data.APIActivityRecord;
 import com.audit.Data.APIAttribute;
+import com.audit.Data.AuditExceptionRecord;
+import com.audit.Data.ExceptionMessages;
 import com.audit.Data.RKAccountDataRecord;
 import com.audit.Reports.AuditReportRecord;
 import com.controllers.AppConfig;
 
-
+//
+// class responsible to handle testing for Account Open API Requests
+//
 public class ProcessAccountRKToAPITests extends ProcessRKToAPITests {
     
     public ProcessAccountRKToAPITests( AppConfig appConfig, APIActivityRecord apiActivityRecord) {
@@ -18,15 +22,15 @@ public class ProcessAccountRKToAPITests extends ProcessRKToAPITests {
 
         this.dataRecord = this.appConfig.rkDataStore.getAccountDataRecord(apiActivityRecord);
 
-      //  if (this.accountDataRecord == null) {
-       //     this.noRKDatafound();
-      //      return;
-      //  }
- 
+        if (this.dataRecord == null) {
+            this.noRKDatafound();
+            return;
+        }
 
         //System.out.println("Account Data Record: " + this.accountDataRecord.accountNumber);
         this.testIsTPPAccount();
         this.testIsTPPAccountWithBalance();
+        this.testEDelivery();
      
         this.testAttribute(APIAttribute.PLAN_NUMBER);
         this.testAttribute(APIAttribute.FIRST_NAME);
@@ -61,9 +65,7 @@ public class ProcessAccountRKToAPITests extends ProcessRKToAPITests {
         this.testAttribute(APIAttribute.PRIM_BENE_GENDER);
         this.testAttribute(APIAttribute.PRIM_BENE_DOB);
         this.testAttribute(APIAttribute.PRIM_BENE_SSN);
-      
         this.testAttribute(APIAttribute.PRIM_BENE_PHONE);
-      
         this.testAttribute(APIAttribute.PRIM_BENE_PERCENTAGE);
         this.testAttribute(APIAttribute.PRIM_BENE_ADDRESS1);
         this.testAttribute(APIAttribute.PRIM_BENE_CITY);
@@ -83,17 +85,28 @@ public class ProcessAccountRKToAPITests extends ProcessRKToAPITests {
         this.testAttribute(APIAttribute.CNTG_BENE_CITY);
         this.testAttribute(APIAttribute.CNTG_BENE_STATE);
         this.testAttribute(APIAttribute.CNTG_BENE_ZIP);
-        this.testAttribute(APIAttribute.EMAIL_DELIVERY);
 
         return ;
 
     }
     
-    public void noRKDatafound() {
+    public  void noRKDatafound() {
 
        AuditReportRecord accountOpenAuditReport = new AuditReportRecord();
-        //accountOpenAuditReport.noRKDatafound(this.apiActivityRecord);
+       AuditExceptionRecord exception = ExceptionMessages.GetExceptionMessage(AuditExceptionCategory.MSG_ACCOUNT_NOT_FOUND.toString()); // Declare the variable 'exception'
+        
+        if (exception == null) {
+            System.out.println("Exception not found for " + AuditExceptionCategory.MSG_ACCOUNT_NOT_FOUND.toString());
+            return;
+        }
+        accountOpenAuditReport.field = APIAttribute.NO_ACCOUNT_FOUND.toString();
+        accountOpenAuditReport.exceptionCategory = exception.category;
+        accountOpenAuditReport.exceptionReason = exception.reason;
+        accountOpenAuditReport.exceptionDescription = exception.description;
+        accountOpenAuditReport.combineExceptionsDescription = "No RK Data found for Account Number: " + this.apiActivityRecord.getAttribute(APIAttribute.ACCOUNT_NUMBER);
+      
         this.appConfig.accountOpenAuditReport.add(accountOpenAuditReport);
+   
     }
 
     public Boolean testIsTPPAccount() {
@@ -117,5 +130,8 @@ public class ProcessAccountRKToAPITests extends ProcessRKToAPITests {
         return false;
     }
  
+    public Boolean testEDelivery() {
+        return true;
+    }
 
 }
