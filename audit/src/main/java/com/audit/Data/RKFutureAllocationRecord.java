@@ -11,12 +11,10 @@ public class RKFutureAllocationRecord extends RKDataRecord {
     public String id;
     public String stamp;
     public String jsonPackage;
-
+ 
     public RKFutureAllocationRecord(String id, String stamp, String jsonPackage) {
         this.fundAllocations = new ArrayList<RKFundAllocationRecord>();
-        this.id = id;
-        this.stamp = stamp;
-        this.jsonPackage = jsonPackage;
+ 
         
         JSONObject jsonObject = new JSONObject(jsonPackage);
         JSONArray jsonArray = jsonObject.getJSONArray("allocation");
@@ -33,7 +31,7 @@ public class RKFutureAllocationRecord extends RKDataRecord {
 
     public RKFundAllocationRecord getFundAllocation(String fundCode) {
         for (RKFundAllocationRecord record : fundAllocations) {
-            if (record.getAttributes(APIAttribute.FUTURE_ALLOCATION_FUND_CODE).equals(fundCode)) {
+            if (record.fundCode).equals(fundCode)) {
                 return record;
             }
         }
@@ -43,7 +41,7 @@ public class RKFutureAllocationRecord extends RKDataRecord {
     public Double allocationTotal() {
         Double total = 0.0;
         for (RKFundAllocationRecord record : fundAllocations) {
-            total += Double.parseDouble(record.getAttributes(APIAttribute.FUTURE_ALLOCATION_FUND_PERCENT));
+            total += Double.parseDouble(record.fundPercentString);
         }
         return total;
     }
@@ -53,13 +51,5 @@ public class RKFutureAllocationRecord extends RKDataRecord {
         this.fundAllocations.add(new RKFundAllocationRecord(fundName, fundPercent));
     }   
 
-    public String getAttribute(APIAttribute attribute) {
-
-        if (attribute== APIAttribute.ID) {
-            return this.id;
-        } 
-        return null;
- 
-    }
 
 }
