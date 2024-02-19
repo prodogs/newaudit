@@ -1,7 +1,6 @@
 package com.audit.Data;
 
 import java.util.ArrayList;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -14,8 +13,11 @@ public class RKFutureAllocationRecord extends RKDataRecord {
  
     public RKFutureAllocationRecord(String id, String stamp, String jsonPackage) {
         this.fundAllocations = new ArrayList<RKFundAllocationRecord>();
+
+        this.id = id;
+        this.stamp = stamp;
+        this.jsonPackage = jsonPackage; 
  
-        
         JSONObject jsonObject = new JSONObject(jsonPackage);
         JSONArray jsonArray = jsonObject.getJSONArray("allocation");
         for (int i = 0; i < jsonArray.length(); i++) {
@@ -46,10 +48,24 @@ public class RKFutureAllocationRecord extends RKDataRecord {
         return total;
     }
     
-
     public void addFundAllocation(String fundName, String fundPercent) {
         this.fundAllocations.add(new RKFundAllocationRecord(fundName, fundPercent));
     }   
+
+    public String getAttribute(APIAttribute attributeType) {
+        String attribute = attributeType.toString();
+  
+        switch (attribute) {
+            case "id":
+                return this.id;
+            case "stamp":
+                return this.stamp;
+            case "jsonPackage":
+                return this.jsonPackage;
+            default:
+                return null;
+        }
+    }
 
 
 }
