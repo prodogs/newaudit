@@ -40,9 +40,9 @@ public class RKFutureAllocationDataStore {
     }
 
     public RKFutureAllocationRecord getFutureAllocationRecord(String id) {
-        for (RKFutureAllocationRecord record : records) {
-           // System.out.println("Record: " + record.getAttribute(APIAttribute.ID));
-            //System.out.println("ID: " + id);
+        for (RKFutureAllocationRecord record : this.records) {
+            System.out.println("Record: " + record.getAttribute(APIAttribute.ID));
+            System.out.println("ID: " + id);
             if (record.getAttribute(APIAttribute.ID).equals(id)) {
                 return record;
             }

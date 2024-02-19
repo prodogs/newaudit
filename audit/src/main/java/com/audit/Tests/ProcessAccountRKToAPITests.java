@@ -6,7 +6,7 @@ import com.audit.Data.AuditExceptionRecord;
 import com.audit.Data.ExceptionMessages;
 import com.audit.Data.RKAccountDataRecord;
 import com.audit.Reports.AuditReportRecord;
-import com.controllers.AppConfig;
+import com.audit.controllers.AppConfig;
 
 //
 // class responsible to handle testing for Account Open API Requests

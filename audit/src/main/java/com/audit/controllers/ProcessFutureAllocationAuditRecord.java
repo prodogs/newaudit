@@ -1,4 +1,4 @@
-package com.controllers;
+package com.audit.controllers;
 
 import com.audit.Data.APIActivityRecord;
 import com.audit.Data.APIAttribute;

@@ -8,7 +8,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import org.dhatim.fastexcel.Workbook;
-import com.controllers.AppConfig;
+
+import com.audit.controllers.AppConfig;
 
 public class AuditReport {
 

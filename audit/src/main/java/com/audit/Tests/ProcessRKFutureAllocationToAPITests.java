@@ -8,7 +8,7 @@ import com.audit.Data.RKFundAllocationRecord;
 import com.audit.Data.RKFutureAllocationDataStore;
 import com.audit.Data.RKFutureAllocationRecord;
 import com.audit.Reports.AuditReportRecord;
-import com.controllers.AppConfig;
+import com.audit.controllers.AppConfig;
 
 
 // Class Responsible to Handle all tests related to Allocation Requests or Realiangment Requests
@@ -20,7 +20,9 @@ public class ProcessRKFutureAllocationToAPITests  extends ProcessRKToAPITests {
   
         RKFutureAllocationDataStore allocationStore = new RKFutureAllocationDataStore();
 
-        this.dataRecord = allocationStore.getFutureAllocationRecord(apiActivityRecord.getAttribute(APIAttribute.ID));
+        String apiActivityRecordID = apiActivityRecord.getAttribute(APIAttribute.ID);
+
+        this.dataRecord = allocationStore.getFutureAllocationRecord(apiActivityRecordID);
 
         this.run();
     }

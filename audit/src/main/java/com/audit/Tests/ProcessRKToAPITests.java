@@ -5,7 +5,7 @@ import com.audit.Data.APIAttribute;
 import com.audit.Data.ExceptionMessages;
 import com.audit.Data.RKDataRecord;
 import com.audit.Reports.AuditReportRecord;
-import com.controllers.AppConfig;
+import com.audit.controllers.AppConfig;
 import com.audit.Data.AuditExceptionRecord;
 
 // Parent Class For All Test Classes
