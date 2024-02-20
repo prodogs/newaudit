@@ -2,13 +2,14 @@ package com.audit.Tests;
 
 import com.audit.Data.APIActivityRecord;
 import com.audit.Data.APIAttribute;
-import com.audit.Data.AuditExceptionRecord;
 import com.audit.Data.ExceptionMessages;
-import com.audit.Data.RKFundAllocationRecord;
 import com.audit.Data.RKFutureAllocationDataStore;
 import com.audit.Data.RKFutureAllocationRecord;
-import com.audit.Reports.AuditReportRecord;
+import com.audit.Reports.AuditExceptionRecord;
+import com.audit.Reports.ExceptionMessages;
 import com.audit.controllers.AppConfig;
+import com.audit.Data.ExceptionMessages;
+import com.audit.ExceptionMessages;
 
 
 // Class Responsible to Handle all tests related to Allocation Requests or Realiangment Requests
@@ -55,20 +56,20 @@ public class ProcessRKFutureAllocationToAPITests  extends ProcessRKToAPITests {
 
 
     public void failureResponse() {
-        AuditReportRecord transAuditReport = new AuditReportRecord();
+                AuditReportRecord transAuditReport = new AuditReportRecord();
 
-        String attribute = APIAttribute.FUTURE_ALLOCATION_FAILURE.toString();
+                String attribute = APIAttribute.FUTURE_ALLOCATION_FAILURE.toString();
 
-        AuditExceptionRecord exception = ExceptionMessages.GetExceptionMessage(attribute);
+                AuditExceptionRecord exception = ExceptionMessages.GetExceptionMessage(attribute);
 
-        if (exception == null) {
-            System.out.println("Exception not found for " + attribute.toString());
-            return;
-        }
+                if (exception == null) {
+                    System.out.println("Exception not found for " + attribute.toString());
+                    return;
+                }
 
-        String details = "Failure Response";
+                String details = "Failure Response";
 
-        transAuditReport.field = attribute.toString();
+                transAuditReport.field = attribute.toString();
 
         transAuditReport.exceptionCategory = exception.category;
         transAuditReport.exceptionReason = exception.reason;
@@ -118,7 +119,7 @@ public class ProcessRKFutureAllocationToAPITests  extends ProcessRKToAPITests {
         }
 
         String details = "Allocation Less than 100";
-        
+
         transAuditReport.field = attribute.toString();
         transAuditReport.exceptionCategory = exception.category;
         transAuditReport.exceptionReason = exception.reason;
